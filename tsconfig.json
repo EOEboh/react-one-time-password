@@ -2,6 +2,8 @@
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
+    "declaration": true,
+    "outDir": "dist",
     "jsx": "react",
     "strict": true,
     "moduleResolution": "node",

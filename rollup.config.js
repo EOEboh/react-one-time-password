@@ -5,10 +5,18 @@ import babel from "@rollup/plugin-babel";
 
 export default {
   input: "src/index.tsx",
-  output: {
-    file: "dist/bundle.js",
-    format: "es",
-  },
+  output: [
+    {
+      file: "dist/bundle.js",
+      format: "es",
+      sourcemap: true,
+    },
+    {
+      file: "dist/bundle.cjs",
+      format: "cjs",
+      sourcemap: true,
+    },
+  ],
   plugins: [
     resolve(),
     commonjs(),

@@ -2,7 +2,8 @@
   "name": "react-one-time-password",
   "version": "1.0.0",
   "description": "A react OTP component for websites and webapps",
-  "main": "src/index.tsx",
+  "main": "dist/bundle.cjs",
+  "module": "dist/bundle.js",
   "type": "module",
   "scripts": {
     "build": "rollup -c",

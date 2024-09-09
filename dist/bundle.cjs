@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+'use strict';
+
+var React = require('react');
 
 /******************************************************************************
 Copyright (c) Microsoft Corporation.
@@ -45,8 +47,8 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
 
 var OTPInput = function (_a) {
     var length = _a.length, onChange = _a.onChange, _b = _a.autoFocus, autoFocus = _b === void 0 ? false : _b, inputStyle = _a.inputStyle, containerStyle = _a.containerStyle, _c = _a.inputType, inputType = _c === void 0 ? "text" : _c;
-    var _d = useState(Array(length).fill("")), otp = _d[0], setOtp = _d[1];
-    useEffect(function () {
+    var _d = React.useState(Array(length).fill("")), otp = _d[0], setOtp = _d[1];
+    React.useEffect(function () {
         if (autoFocus) {
             var firstInput = document.querySelector("input");
             if (firstInput)
@@ -68,5 +70,5 @@ var OTPInput = function (_a) {
     return (React.createElement("div", { style: containerStyle }, otp.map(function (_, index) { return (React.createElement("input", { key: index, type: inputType, maxLength: 1, value: otp[index], onChange: function (e) { return handleChange(e.target, index); }, onFocus: function (e) { return e.target.select(); }, style: __assign({ width: "2rem", marginRight: "0.5rem", textAlign: "center" }, inputStyle) })); })));
 };
 
-export { OTPInput };
-//# sourceMappingURL=bundle.js.map
+exports.OTPInput = OTPInput;
+//# sourceMappingURL=bundle.cjs.map
