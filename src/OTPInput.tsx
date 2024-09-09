@@ -3,30 +3,30 @@ import React, { useState, useEffect, CSSProperties } from "react";
 type AllowedInputTypes = "password" | "text" | "number" | "tel";
 
 interface OTPInputProps {
-  length: number;
+  numberOfInputs: number;
   onChange: (otp: string) => void;
-  autoFocus?: boolean;
+  shouldAutoFocus?: boolean;
   inputStyle?: CSSProperties;
   containerStyle?: CSSProperties;
   inputType?: AllowedInputTypes;
 }
 
 const OTPInput: React.FC<OTPInputProps> = ({
-  length,
+  numberOfInputs,
   onChange,
-  autoFocus = false,
+  shouldAutoFocus = true,
   inputStyle,
   containerStyle,
   inputType = "text",
 }) => {
-  const [otp, setOtp] = useState<string[]>(Array(length).fill(""));
+  const [otp, setOtp] = useState<string[]>(Array(numberOfInputs).fill(""));
 
   useEffect(() => {
-    if (autoFocus) {
-      const firstInput = document.querySelector("input");
+    if (shouldAutoFocus) {
+      const firstInput = document.getElementById("otp-input");
       if (firstInput) firstInput.focus();
     }
-  }, [autoFocus]);
+  }, [shouldAutoFocus]);
 
   const handleChange = (element: HTMLInputElement, index: number) => {
     const value = element.value;
@@ -46,6 +46,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
     <div style={containerStyle}>
       {otp.map((_, index) => (
         <input
+          id="otp-input"
           key={index}
           type={inputType}
           maxLength={1}

@@ -11,14 +11,16 @@ type Story = StoryObj<typeof OTPInput>;
 export const Default: Story = {
   name: "I am the default look",
   args: {
-    length: 6,
+    numberOfInputs: 6,
     onChange: (otp) => console.log("otp", otp),
+    inputStyle: {},
+    inputType: "tel",
   },
 };
 
 export const Four: Story = {
   args: {
     ...Default.args,
-    length: 4,
+    numberOfInputs: 4,
   },
 };
