@@ -1,0 +1,54 @@
+{
+  "name": "react-one-time-password",
+  "version": "1.0.0",
+  "description": "A react OTP component for websites and webapps",
+  "main": "src/index.tsx",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EOEboh/react-one-time-password.git"
+  },
+  "keywords": [
+    "otp",
+    "react"
+  ],
+  "author": "Emmanuel O. Eboh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EOEboh/react-one-time-password/issues"
+  },
+  "homepage": "https://github.com/EOEboh/react-one-time-password#readme",
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.9.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@storybook/addon-essentials": "^8.2.9",
+    "@storybook/addon-interactions": "^8.2.9",
+    "@storybook/addon-links": "^8.2.9",
+    "@storybook/addon-onboarding": "^8.2.9",
+    "@storybook/addon-webpack5-compiler-swc": "^1.0.5",
+    "@storybook/blocks": "^8.2.9",
+    "@storybook/react": "^8.2.9",
+    "@storybook/react-webpack5": "^8.2.9",
+    "@storybook/test": "^8.2.9",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "rollup": "^4.21.2",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "storybook": "^8.2.9",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.5.4"
+  }
+}
