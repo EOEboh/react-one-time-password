@@ -1,11 +1,18 @@
 import React, { useState, useEffect, CSSProperties } from "react";
 
 type AllowedInputTypes = "password" | "text" | "number" | "tel";
+type AllowedInputHeight = "auto" | "fit-content" | string;
 
 interface OTPInputProps {
   numberOfInputs: number;
   onChange: (otp: string) => void;
-  shouldAutoFocus?: boolean;
+  inputWidth: string;
+  inputHeight: AllowedInputHeight;
+  disableAutoFocus?: boolean;
+  focusColor?: string;
+  borderRadius?: string;
+  showSeparators?: boolean;
+  renderCustomSeparators?: () => React.ReactNode | React.ReactNode;
   inputStyle?: CSSProperties;
   containerStyle?: CSSProperties;
   inputType?: AllowedInputTypes;
@@ -14,19 +21,35 @@ interface OTPInputProps {
 const OTPInput: React.FC<OTPInputProps> = ({
   numberOfInputs,
   onChange,
-  shouldAutoFocus = true,
+  inputWidth = "2.5rem",
+  inputHeight = "3rem",
+  disableAutoFocus = false,
+  focusColor,
+  borderRadius,
+  showSeparators = true,
+  renderCustomSeparators = () => <span style={{ margin: "0 0.5rem" }}>-</span>,
   inputStyle,
   containerStyle,
   inputType = "text",
 }) => {
   const [otp, setOtp] = useState<string[]>(Array(numberOfInputs).fill(""));
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
-    if (shouldAutoFocus) {
-      const firstInput = document.getElementById("otp-input");
+    if (!disableAutoFocus) {
+      const firstInput = document.getElementById("otp-input-0");
       if (firstInput) firstInput.focus();
     }
-  }, [shouldAutoFocus]);
+  }, [disableAutoFocus]);
+
+  const handleOnFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+    event.target.select();
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
 
   const handleChange = (element: HTMLInputElement, index: number) => {
     const value = element.value;
@@ -37,29 +60,44 @@ const OTPInput: React.FC<OTPInputProps> = ({
     setOtp(newOtp);
     onChange(newOtp.join(""));
 
-    if (value && element.nextSibling) {
-      (element.nextSibling as HTMLInputElement).focus();
+    // maintain next focus even with `renderCustomSeparators`
+    if (value) {
+      const nextInput = document.getElementById(`otp-input-${index + 1}`);
+      if (nextInput) {
+        (nextInput as HTMLInputElement).focus();
+      }
     }
   };
 
   return (
     <div style={containerStyle}>
       {otp.map((_, index) => (
-        <input
-          id="otp-input"
-          key={index}
-          type={inputType}
-          maxLength={1}
-          value={otp[index]}
-          onChange={(e) => handleChange(e.target, index)}
-          onFocus={(e) => e.target.select()}
-          style={{
-            width: "2rem",
-            marginRight: "0.5rem",
-            textAlign: "center",
-            ...inputStyle,
-          }}
-        />
+        <React.Fragment key={index}>
+          <input
+            id={`otp-input-${index}`}
+            key={index}
+            type={inputType}
+            maxLength={1}
+            value={otp[index]}
+            onChange={(e) => handleChange(e.target, index)}
+            onFocus={handleOnFocus}
+            onBlur={handleBlur}
+            style={{
+              width: inputWidth,
+              height: inputHeight,
+              marginRight: "0.5rem",
+              textAlign: "center",
+              borderRadius,
+              borderColor: isFocused && focusColor ? focusColor : undefined,
+              ...inputStyle,
+            }}
+          />
+          {showSeparators &&
+            index < numberOfInputs - 1 &&
+            (typeof renderCustomSeparators === "function"
+              ? renderCustomSeparators()
+              : renderCustomSeparators)}
+        </React.Fragment>
       ))}
     </div>
   );

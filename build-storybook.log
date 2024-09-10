@@ -1,0 +1,31 @@
+
+> react-one-time-password@1.0.0 build-storybook
+> storybook build --output-dir C:\Users\USER\AppData\Local\Temp\chromatic--14976-vq8V0tZKImtC
+
+storybook v8.2.9
+
+info => Cleaning outputDir: ..\..\AppData\Local\Temp\chromatic--14976-vq8V0tZKImtC
+info => Loading presets
+info => Building manager..
+info => Manager built (639 ms)
+info => Building preview..
+info Addon-docs: using MDX3
+info => Using implicit CSS loaders
+info => Using default Webpack5 setup
+info Using tsconfig paths for react-docgen
+WARN asset size limit: The following asset(s) exceed the recommended size limit (244 KiB).
+WARN This can impact web performance.
+WARN Assets: 
+WARN   static/media/addon-library.7a58d2cb.png (456 KiB)
+WARN   197.f7e4d523.iframe.bundle.js (903 KiB)
+WARN   126.f1640bb8.iframe.bundle.js (1010 KiB)
+WARN   826.d481feb7.iframe.bundle.js (826 KiB)
+WARN entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (244 KiB). This can impact web performance.
+WARN Entrypoints:
+WARN   main (839 KiB)
+WARN       runtime~main.9b7944c9.iframe.bundle.js
+WARN       826.d481feb7.iframe.bundle.js
+WARN       main.6866a48e.iframe.bundle.js
+WARN 
+info => Preview built (40 s)
+info => Output directory: C:\Users\USER\AppData\Local\Temp\chromatic--14976-vq8V0tZKImtC
