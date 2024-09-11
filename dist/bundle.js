@@ -44,15 +44,23 @@ typeof SuppressedError === "function" ? SuppressedError : function (error, suppr
 };
 
 var OTPInput = function (_a) {
-    var length = _a.length, onChange = _a.onChange, _b = _a.autoFocus, autoFocus = _b === void 0 ? false : _b, inputStyle = _a.inputStyle, containerStyle = _a.containerStyle, _c = _a.inputType, inputType = _c === void 0 ? "text" : _c;
-    var _d = useState(Array(length).fill("")), otp = _d[0], setOtp = _d[1];
+    var numberOfInputs = _a.numberOfInputs, onChange = _a.onChange, _b = _a.inputWidth, inputWidth = _b === void 0 ? "2.5rem" : _b, _c = _a.inputHeight, inputHeight = _c === void 0 ? "3rem" : _c, _d = _a.disableAutoFocus, disableAutoFocus = _d === void 0 ? false : _d, focusColor = _a.focusColor, borderRadius = _a.borderRadius, _e = _a.showSeparators, showSeparators = _e === void 0 ? true : _e, _f = _a.renderCustomSeparators, renderCustomSeparators = _f === void 0 ? function () { return React.createElement("span", { style: { margin: "0 0.5rem" } }, "-"); } : _f, inputStyle = _a.inputStyle, containerStyle = _a.containerStyle, _g = _a.inputType, inputType = _g === void 0 ? "text" : _g;
+    var _h = useState(Array(numberOfInputs).fill("")), otp = _h[0], setOtp = _h[1];
+    var _j = useState(false), isFocused = _j[0], setIsFocused = _j[1];
     useEffect(function () {
-        if (autoFocus) {
-            var firstInput = document.querySelector("input");
+        if (!disableAutoFocus) {
+            var firstInput = document.getElementById("otp-input-0");
             if (firstInput)
                 firstInput.focus();
         }
-    }, [autoFocus]);
+    }, [disableAutoFocus]);
+    var handleOnFocus = function (event) {
+        event.target.select();
+        setIsFocused(true);
+    };
+    var handleBlur = function () {
+        setIsFocused(false);
+    };
     var handleChange = function (element, index) {
         var value = element.value;
         if (/[^0-9]/.test(value))
@@ -61,11 +69,21 @@ var OTPInput = function (_a) {
         newOtp[index] = value;
         setOtp(newOtp);
         onChange(newOtp.join(""));
-        if (value && element.nextSibling) {
-            element.nextSibling.focus();
+        // maintain next focus even with `renderCustomSeparators`
+        if (value) {
+            var nextInput = document.getElementById("otp-input-".concat(index + 1));
+            if (nextInput) {
+                nextInput.focus();
+            }
         }
     };
-    return (React.createElement("div", { style: containerStyle }, otp.map(function (_, index) { return (React.createElement("input", { key: index, type: inputType, maxLength: 1, value: otp[index], onChange: function (e) { return handleChange(e.target, index); }, onFocus: function (e) { return e.target.select(); }, style: __assign({ width: "2rem", marginRight: "0.5rem", textAlign: "center" }, inputStyle) })); })));
+    return (React.createElement("div", { style: containerStyle }, otp.map(function (_, index) { return (React.createElement(React.Fragment, { key: index },
+        React.createElement("input", { id: "otp-input-".concat(index), key: index, type: inputType, maxLength: 1, value: otp[index], onChange: function (e) { return handleChange(e.target, index); }, onFocus: handleOnFocus, onBlur: handleBlur, style: __assign({ width: inputWidth, height: inputHeight, marginRight: "0.5rem", textAlign: "center", borderRadius: borderRadius, borderColor: isFocused && focusColor ? focusColor : undefined }, inputStyle) }),
+        showSeparators &&
+            index < numberOfInputs - 1 &&
+            (typeof renderCustomSeparators === "function"
+                ? renderCustomSeparators()
+                : renderCustomSeparators))); })));
 };
 
 export { OTPInput };

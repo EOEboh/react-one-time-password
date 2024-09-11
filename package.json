@@ -5,8 +5,14 @@
   "main": "dist/bundle.cjs",
   "module": "dist/bundle.js",
   "type": "module",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
   "scripts": {
     "build": "rollup -c",
+    "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "storybook dev -p 6006",
     "storybook": "storybook dev -p 6006",
@@ -22,7 +28,7 @@
     "react"
   ],
   "author": "Emmanuel O. Eboh",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/EOEboh/react-one-time-password/issues"
   },

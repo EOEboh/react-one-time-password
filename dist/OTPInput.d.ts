@@ -1,9 +1,16 @@
 import React, { CSSProperties } from "react";
 type AllowedInputTypes = "password" | "text" | "number" | "tel";
+type AllowedInputHeight = "auto" | "fit-content" | string;
 interface OTPInputProps {
-    length: number;
+    numberOfInputs: number;
     onChange: (otp: string) => void;
-    autoFocus?: boolean;
+    inputWidth: string;
+    inputHeight: AllowedInputHeight;
+    disableAutoFocus?: boolean;
+    focusColor?: string;
+    borderRadius?: string;
+    showSeparators?: boolean;
+    renderCustomSeparators?: () => React.ReactNode | React.ReactNode;
     inputStyle?: CSSProperties;
     containerStyle?: CSSProperties;
     inputType?: AllowedInputTypes;
