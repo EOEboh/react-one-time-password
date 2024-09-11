@@ -101,27 +101,26 @@ function App() {
 export default App;
 ```
 
-Prop Type Default Description
-numberOfInputs number Required Number of OTP inputs.
-onChange (otp: string) => void Required Callback function when OTP changes.
-inputWidth string "1em" Width of each input.
-inputHeight "auto" | "fit-content" | string "3em" Height of each input.
-disableAutoFocus boolean false Disable auto-focus on the first input.
-borderColor string undefined Border color of the input when focused.
-borderRadius string undefined Border radius of the input.
-showSeparators boolean true Show separators between inputs.
-renderCustomSeparators () => React.ReactNode | React.ReactNode () => <span style={{ margin: "0 0.5rem" }}>-</span> Custom separator component.
-inputStyle CSSProperties undefined Custom styles for the input.
-containerStyle CSSProperties undefined Custom styles for the container.
-inputType "password" | "text" | "tel" "tel" Type of the input.
-inputMode "none" | "numeric" | "tel" "numeric" Input mode of the input.
-resendTimeout number 60 Timeout in seconds for the resend button.
-onResend () => void undefined Callback function when resend button is clicked.
-resendContainerStyle CSSProperties undefined Custom styles for the resend container.
-resendButtonStyle CSSProperties undefined Custom styles for the resend button.
-renderResendContainer (children: React.ReactNode) => React.ReactNode undefined Custom render function for the resend container.
-renderResendButton (onClick: () => void, disabled: boolean, timer: number) => React.ReactNode undefined Custom render function for the resend button.
-showResendButton boolean true Show the resend button.
-shouldDisableInput boolean false Disable input when OTP is complete.
-License
-This project is licensed under the MIT License.
+| Prop                     | Type                                                                         | Default                                               | Description                                                  |
+| ------------------------ | ---------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------ |
+| `numberOfInputs`         | `number`                                                                     | N/A                                                   | Number of OTP input fields.                                  |
+| `onChange`               | `(otp: string) => void`                                                      | N/A                                                   | Callback function to handle OTP change.                      |
+| `inputWidth`             | `string`                                                                     | `"1em"`                                               | Width of each OTP input field.                               |
+| `inputHeight`            | `"auto" \| "fit-content" \| string`                                          | `"3em"`                                               | Height of each OTP input field.                              |
+| `disableAutoFocus`       | `boolean`                                                                    | `false`                                               | Disable auto-focus on the first input field.                 |
+| `borderColor`            | `string`                                                                     | N/A                                                   | Border color of the input fields when focused.               |
+| `borderRadius`           | `string`                                                                     | N/A                                                   | Border radius of the input fields.                           |
+| `showSeparators`         | `boolean`                                                                    | `true`                                                | Show separators between input fields.                        |
+| `renderCustomSeparators` | `() => React.ReactNode \| React.ReactNode`                                   | `() => <span style={{ margin: "0 0.5rem" }}>-</span>` | Custom separator component or function to render separators. |
+| `inputStyle`             | `CSSProperties`                                                              | N/A                                                   | Custom styles for the input fields.                          |
+| `containerStyle`         | `CSSProperties`                                                              | N/A                                                   | Custom styles for the container of the input fields.         |
+| `inputType`              | `"password" \| "text" \| "tel"`                                              | `"tel"`                                               | Type of the input fields.                                    |
+| `inputMode`              | `"none" \| "numeric" \| "tel"`                                               | `"numeric"`                                           | Input mode of the input fields.                              |
+| `resendTimeout`          | `number`                                                                     | `60`                                                  | Timeout in seconds before the resend button is enabled.      |
+| `onResend`               | `() => void`                                                                 | N/A                                                   | Callback function to handle resend action.                   |
+| `resendContainerStyle`   | `CSSProperties`                                                              | N/A                                                   | Custom styles for the resend container.                      |
+| `resendButtonStyle`      | `CSSProperties`                                                              | N/A                                                   | Custom styles for the resend button.                         |
+| `renderResendContainer`  | `(children: React.ReactNode) => React.ReactNode`                             | N/A                                                   | Custom function to render the resend container.              |
+| `renderResendButton`     | `(onClick: () => void, disabled: boolean, timer: number) => React.ReactNode` | N/A                                                   | Custom function to render the resend button.                 |
+| `showResendButton`       | `boolean`                                                                    | `true`                                                | Show the resend button.                                      |
+| `shouldDisableInput`     | `boolean`                                                                    | `false`                                               | Disable input fields when OTP is complete.                   |
