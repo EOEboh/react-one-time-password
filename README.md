@@ -1,14 +1,13 @@
-# OTPInput Component
+# OTP Input Component
 
 A customizable OTP (One-Time Password) input component for React.
 
 ## Installation
 
-To install the component, you can use npm or yarn:
+Take a look at the basic usage:
 
 ```jsx
 import React, { useState } from "react";
-import "./App.css";
 import { OTPInput } from "react-one-time-password";
 
 const App: React.FC = () => {
@@ -31,9 +30,10 @@ const App: React.FC = () => {
 export default App;
 ```
 
+If you wish to have a _Resend OTP_ and _Timer_ logic, you can enable the `showResendButton` prop and optionally pass any custom markup via the `renderResendContainer` and ` renderResendButton` as shown below:
+
 ```jsx
 import React, { useState } from "react";
-import "./App.css";
 import { OTPInput } from "react-one-time-password";
 
 function App() {
@@ -85,6 +85,7 @@ function App() {
         borderRadius="4px"
         resendTimeout={60}
         onResend={handleResend}
+        showResendButton
         renderResendContainer={customRenderResendContainer}
         renderResendButton={customRenderResendButton}
       />
@@ -95,6 +96,8 @@ function App() {
 
 export default App;
 ```
+
+For more options, feel free to check out the props below:
 
 | Prop                     | Type                                                                         | Default                                               | Description                                                  |
 | ------------------------ | ---------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------ |
@@ -117,5 +120,5 @@ export default App;
 | `resendButtonStyle`      | `CSSProperties`                                                              | N/A                                                   | Custom styles for the resend button.                         |
 | `renderResendContainer`  | `(children: React.ReactNode) => React.ReactNode`                             | N/A                                                   | Custom function to render the resend container.              |
 | `renderResendButton`     | `(onClick: () => void, disabled: boolean, timer: number) => React.ReactNode` | N/A                                                   | Custom function to render the resend button.                 |
-| `showResendButton`       | `boolean`                                                                    | `true`                                                | Show the resend button.                                      |
+| `showResendButton`       | `boolean`                                                                    | `false`                                               | Show the resend button.                                      |
 | `shouldDisableInput`     | `boolean`                                                                    | `false`                                               | Disable input fields when OTP is complete.                   |

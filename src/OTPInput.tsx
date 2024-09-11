@@ -52,7 +52,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
   resendButtonStyle,
   renderResendContainer,
   renderResendButton,
-  showResendButton = true,
+  showResendButton = false,
   shouldDisableInput = false,
 }) => {
   const [otp, setOtp] = useState<string[]>(Array(numberOfInputs).fill(""));
