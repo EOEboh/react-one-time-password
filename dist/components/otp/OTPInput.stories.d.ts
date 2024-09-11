@@ -5,3 +5,4 @@ export default meta;
 type Story = StoryObj<typeof OTPInput>;
 export declare const Default: Story;
 export declare const Four: Story;
+//# sourceMappingURL=OTPInput.stories.d.ts.map

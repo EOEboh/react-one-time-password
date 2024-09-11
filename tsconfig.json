@@ -3,6 +3,8 @@
     "target": "es5",
     "module": "esnext",
     "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
     "outDir": "dist",
     "jsx": "react-jsx",
     "strict": true,
@@ -11,5 +13,5 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"]
+  "include": ["src/**/*"]
 }

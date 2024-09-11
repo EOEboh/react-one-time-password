@@ -14,8 +14,8 @@ export const Default: Story = {
     numberOfInputs: 6,
     onChange: (otp) => console.log("otp", otp),
     inputStyle: {},
-    inputType: "text",
-    focusColor: "#6f8b6f"
+    inputType: "tel",
+    borderColor: "#6f8b6f",
   },
 };
 

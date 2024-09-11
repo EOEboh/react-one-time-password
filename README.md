@@ -1,5 +1,20 @@
-```import React from "react";
-import OTPInput from "./OTPInput";
+# OTPInput Component
+
+A customizable OTP (One-Time Password) input component for React.
+
+## Installation
+
+To install the component, you can use npm or yarn:
+
+````bash
+npm install react-one-time-password
+```
+
+
+```jsx
+import React, { useState } from "react";
+import "./App.css";
+import { OTPInput } from "react-one-time-password";
 
 const App: React.FC = () => {
   const handleOtpChange = (otp: string) => {
@@ -10,25 +25,23 @@ const App: React.FC = () => {
     <div>
       <h1>Enter OTP</h1>
       <OTPInput
-        length={6}
+        numberOfInputs={6}
         onChange={handleOtpChange}
-        inputStyle={{ width: "3rem", height: "3rem", fontSize: "1.5rem" }} // Custom styles for larger inputs
-        focusColor="blue" // Custom focus color
+        inputStyle={{ width: "2em", height: "3em", fontSize: "1.5em" }} // Custom styles for larger inputs
       />
     </div>
   );
 };
 
 export default App;
-```
+````
 
-<!-- Customize resend timer and button -->
-
-```
+```jsx
 import React, { useState } from "react";
-import OTPInput from "./OTPInput"; // Adjust the import path as necessary
+import "./App.css";
+import { OTPInput } from "react-one-time-password";
 
-const OTPVerification: React.FC = () => {
+function App() {
   const [otp, setOtp] = useState("");
 
   const handleOtpChange = (newOtp: string) => {
@@ -66,14 +79,14 @@ const OTPVerification: React.FC = () => {
   );
 
   return (
-    <div style={{ padding: "2rem", maxWidth: "400px", margin: "0 auto" }}>
+    <div>
       <h2>OTP Verification</h2>
       <OTPInput
         numberOfInputs={6}
         onChange={handleOtpChange}
-        inputWidth="2.5rem"
-        inputHeight="3rem"
-        focusColor="#007bff"
+        inputWidth="1em"
+        inputHeight="3em"
+        borderColor="#007bff"
         borderRadius="4px"
         resendTimeout={60}
         onResend={handleResend}
@@ -83,7 +96,32 @@ const OTPVerification: React.FC = () => {
       <p>Entered OTP: {otp}</p>
     </div>
   );
-};
+}
 
-export default OTPVerification;
+export default App;
 ```
+
+Prop Type Default Description
+numberOfInputs number Required Number of OTP inputs.
+onChange (otp: string) => void Required Callback function when OTP changes.
+inputWidth string "1em" Width of each input.
+inputHeight "auto" | "fit-content" | string "3em" Height of each input.
+disableAutoFocus boolean false Disable auto-focus on the first input.
+borderColor string undefined Border color of the input when focused.
+borderRadius string undefined Border radius of the input.
+showSeparators boolean true Show separators between inputs.
+renderCustomSeparators () => React.ReactNode | React.ReactNode () => <span style={{ margin: "0 0.5rem" }}>-</span> Custom separator component.
+inputStyle CSSProperties undefined Custom styles for the input.
+containerStyle CSSProperties undefined Custom styles for the container.
+inputType "password" | "text" | "tel" "tel" Type of the input.
+inputMode "none" | "numeric" | "tel" "numeric" Input mode of the input.
+resendTimeout number 60 Timeout in seconds for the resend button.
+onResend () => void undefined Callback function when resend button is clicked.
+resendContainerStyle CSSProperties undefined Custom styles for the resend container.
+resendButtonStyle CSSProperties undefined Custom styles for the resend button.
+renderResendContainer (children: React.ReactNode) => React.ReactNode undefined Custom render function for the resend container.
+renderResendButton (onClick: () => void, disabled: boolean, timer: number) => React.ReactNode undefined Custom render function for the resend button.
+showResendButton boolean true Show the resend button.
+shouldDisableInput boolean false Disable input when OTP is complete.
+License
+This project is licensed under the MIT License.

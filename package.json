@@ -4,6 +4,7 @@
   "description": "A react OTP component for websites and webapps",
   "main": "dist/bundle.cjs",
   "module": "dist/bundle.js",
+  "types": "dist/index.d.ts",
   "type": "module",
   "files": [
     "dist",

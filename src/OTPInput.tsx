@@ -1,26 +1,16 @@
 import React, { useState, useEffect, CSSProperties } from "react";
 
-enum AllowedInputTypes {
-  PASSWORD = "password",
-  TEXT = "text",
-  TEL = "tel",
-}
-
-enum AllowedInputMode {
-  NONE = "none",
-  NUMERIC = "numeric",
-  TEL = "tel",
-}
-
+type AllowedInputTypes = "password" | "text" | "tel";
+type AllowedInputMode = "none" | "numeric" | "tel";
 type AllowedInputHeight = "auto" | "fit-content" | string;
 
 interface OTPInputProps {
   numberOfInputs: number;
   onChange: (otp: string) => void;
-  inputWidth: string;
-  inputHeight: AllowedInputHeight;
+  inputWidth?: string;
+  inputHeight?: AllowedInputHeight;
   disableAutoFocus?: boolean;
-  focusColor?: string;
+  borderColor?: string;
   borderRadius?: string;
   showSeparators?: boolean;
   renderCustomSeparators?: () => React.ReactNode | React.ReactNode;
@@ -28,7 +18,7 @@ interface OTPInputProps {
   containerStyle?: CSSProperties;
   inputType?: AllowedInputTypes;
   inputMode?: AllowedInputMode;
-  resendTimeout?: number; // in seconds
+  resendTimeout?: number;
   onResend?: () => void;
   resendContainerStyle?: CSSProperties;
   resendButtonStyle?: CSSProperties;
@@ -38,28 +28,32 @@ interface OTPInputProps {
     disabled: boolean,
     timer: number
   ) => React.ReactNode;
+  showResendButton?: boolean;
+  shouldDisableInput?: boolean;
 }
 
 const OTPInput: React.FC<OTPInputProps> = ({
   numberOfInputs,
   onChange,
-  inputWidth = "2.5rem",
-  inputHeight = "3rem",
+  inputWidth = "1em",
+  inputHeight = "3em",
   disableAutoFocus = false,
-  focusColor,
+  borderColor,
   borderRadius,
   showSeparators = true,
   renderCustomSeparators = () => <span style={{ margin: "0 0.5rem" }}>-</span>,
   inputStyle,
   containerStyle,
-  inputType = AllowedInputTypes.TEL,
-  inputMode = AllowedInputMode.NUMERIC,
+  inputType = "tel",
+  inputMode = "numeric",
   resendTimeout = 60,
   onResend,
   resendContainerStyle,
   resendButtonStyle,
   renderResendContainer,
   renderResendButton,
+  showResendButton = true,
+  shouldDisableInput = false,
 }) => {
   const [otp, setOtp] = useState<string[]>(Array(numberOfInputs).fill(""));
   const [isFocused, setIsFocused] = useState(false);
@@ -96,7 +90,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
 
   const handleChange = (element: HTMLInputElement, index: number) => {
     const value = element.value;
-    if (inputType === AllowedInputTypes.TEL && /[^0-9]/.test(value)) return;
+    if (inputType === "tel" && /[^0-9]/.test(value)) return;
 
     const newOtp = [...otp];
     newOtp[index] = value;
@@ -152,7 +146,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
     let pasteIndex = index;
 
     for (let char of pasteData) {
-      if (inputType === AllowedInputTypes.TEL && /[^0-9]/.test(char)) continue;
+      if (inputType === "tel" && /[^0-9]/.test(char)) continue;
       if (pasteIndex < numberOfInputs) {
         newOtp[pasteIndex] = char;
         pasteIndex++;
@@ -199,52 +193,64 @@ const OTPInput: React.FC<OTPInputProps> = ({
   );
 
   return (
-    <div style={containerStyle}>
-      {otp.map((_, index) => (
-        <React.Fragment key={index}>
-          <input
-            id={`otp-input-${index}`}
-            key={index}
-            type={inputType}
-            inputMode={inputMode}
-            maxLength={1}
-            value={otp[index]}
-            onChange={(e) => handleChange(e.target, index)}
-            onFocus={handleOnFocus}
-            onBlur={handleBlur}
-            onKeyDown={(e) => handleKeyDown(e, index)}
-            onPaste={(e) => handlePaste(e, index)}
-            disabled={isOtpComplete}
-            style={{
-              width: inputWidth,
-              height: inputHeight,
-              marginRight: "0.5rem",
-              textAlign: "center",
-              borderRadius,
-              borderColor: isFocused && focusColor ? focusColor : undefined,
-              ...inputStyle,
-            }}
-          />
-          {showSeparators &&
-            index < numberOfInputs - 1 &&
-            (typeof renderCustomSeparators === "function"
-              ? renderCustomSeparators()
-              : renderCustomSeparators)}
-        </React.Fragment>
-      ))}
-      {(renderResendContainer || defaultRenderResendContainer)(
-        canResend
-          ? (renderResendButton || defaultRenderResendButton)(
-              handleResend,
-              false,
-              timer
-            )
-          : (renderResendButton || defaultRenderResendButton)(
-              handleResend,
-              true,
-              timer
-            )
-      )}
+    <div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexWrap: "wrap",
+          ...containerStyle,
+        }}
+      >
+        {otp.map((_, index) => (
+          <React.Fragment key={index}>
+            <input
+              id={`otp-input-${index}`}
+              key={index}
+              type={inputType}
+              inputMode={inputMode}
+              maxLength={1}
+              value={otp[index]}
+              onChange={(e) => handleChange(e.target, index)}
+              onFocus={handleOnFocus}
+              onBlur={handleBlur}
+              onKeyDown={(e) => handleKeyDown(e, index)}
+              onPaste={(e) => handlePaste(e, index)}
+              disabled={shouldDisableInput ? isOtpComplete : false}
+              style={{
+                width: inputWidth,
+                height: inputHeight,
+                marginRight: "0.5rem",
+                textAlign: "center",
+                borderRadius,
+                borderColor: isFocused && borderColor ? borderColor : undefined,
+                ...inputStyle,
+              }}
+            />
+            {showSeparators &&
+              index < numberOfInputs - 1 &&
+              (typeof renderCustomSeparators === "function"
+                ? renderCustomSeparators()
+                : renderCustomSeparators)}
+          </React.Fragment>
+        ))}
+      </div>
+      <div style={{ marginTop: "1rem" }}>
+        {showResendButton &&
+          (renderResendContainer || defaultRenderResendContainer)(
+            canResend
+              ? (renderResendButton || defaultRenderResendButton)(
+                  handleResend,
+                  false,
+                  timer
+                )
+              : (renderResendButton || defaultRenderResendButton)(
+                  handleResend,
+                  true,
+                  timer
+                )
+          )}
+      </div>
     </div>
   );
 };
