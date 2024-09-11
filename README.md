@@ -6,11 +6,6 @@ A customizable OTP (One-Time Password) input component for React.
 
 To install the component, you can use npm or yarn:
 
-````bash
-npm install react-one-time-password
-```
-
-
 ```jsx
 import React, { useState } from "react";
 import "./App.css";
@@ -34,7 +29,7 @@ const App: React.FC = () => {
 };
 
 export default App;
-````
+```
 
 ```jsx
 import React, { useState } from "react";
