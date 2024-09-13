@@ -4,7 +4,7 @@ type AllowedInputTypes = "password" | "text" | "tel";
 type AllowedInputMode = "none" | "numeric" | "tel";
 type AllowedInputHeight = "auto" | "fit-content" | string;
 
-interface OTPInputProps {
+export interface OTPInputProps {
   numberOfInputs: number;
   onChange: (otp: string) => void;
   inputWidth?: string;
