@@ -123,9 +123,9 @@ For more options, feel free to check out the props below:
 | `showResendButton`       | `boolean`                                                                    | `false`                                               | Show the resend button.                                      |
 | `shouldDisableInput`     | `boolean`                                                                    | `false`                                               | Disable input fields when OTP is complete.                   |
 
-
 ## Special Thanks to these Contributors
-!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 
