@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react/*";
-import OTPInput from "../../OTPInput";
+import { OTPInput } from "../..";
 
 const meta: Meta<typeof OTPInput> = {
   component: OTPInput,
@@ -11,7 +11,7 @@ type Story = StoryObj<typeof OTPInput>;
 export const Default: Story = {
   name: "I am the default look",
   args: {
-    numberOfInputs: 6,
+    inputLength: 6,
     onChange: (otp) => console.log("otp", otp),
     inputStyle: {},
     inputType: "tel",
@@ -22,6 +22,6 @@ export const Default: Story = {
 export const Four: Story = {
   args: {
     ...Default.args,
-    numberOfInputs: 4,
+    inputLength: 4,
   },
 };

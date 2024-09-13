@@ -1,11 +1,11 @@
-import React, { useState, useEffect, CSSProperties } from "react";
+import React, { CSSProperties, useEffect, useState } from "react";
 
 type AllowedInputTypes = "password" | "text" | "tel";
 type AllowedInputMode = "none" | "numeric" | "tel";
 type AllowedInputHeight = "auto" | "fit-content" | string;
 
 export interface OTPInputProps {
-  numberOfInputs: number;
+  inputLength: number;
   onChange: (otp: string) => void;
   inputWidth?: string;
   inputHeight?: AllowedInputHeight;
@@ -32,8 +32,8 @@ export interface OTPInputProps {
   shouldDisableInput?: boolean;
 }
 
-const OTPInput: React.FC<OTPInputProps> = ({
-  numberOfInputs,
+export const OTPInput: React.FC<OTPInputProps> = ({
+  inputLength,
   onChange,
   inputWidth = "1em",
   inputHeight = "3em",
@@ -55,7 +55,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
   showResendButton = false,
   shouldDisableInput = false,
 }) => {
-  const [otp, setOtp] = useState<string[]>(Array(numberOfInputs).fill(""));
+  const [otp, setOtp] = useState<string[]>(Array(inputLength).fill(""));
   const [isFocused, setIsFocused] = useState(false);
   const [isOtpComplete, setIsOtpComplete] = useState(false);
   const [timer, setTimer] = useState(resendTimeout);
@@ -90,6 +90,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
 
   const handleChange = (element: HTMLInputElement, index: number) => {
     const value = element.value;
+    // TODO: add input mask to support different countries
     if (inputType === "tel" && /[^0-9]/.test(value)) return;
 
     const newOtp = [...otp];
@@ -118,7 +119,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
       if (prevInput) {
         (prevInput as HTMLInputElement).focus();
       }
-    } else if (event.key === "ArrowRight" && index < numberOfInputs - 1) {
+    } else if (event.key === "ArrowRight" && index < inputLength - 1) {
       const nextInput = document.getElementById(`otp-input-${index + 1}`);
       if (nextInput) {
         (nextInput as HTMLInputElement).focus();
@@ -128,7 +129,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
       if (prevInput) {
         (prevInput as HTMLInputElement).focus();
       }
-    } else if (event.key === "Delete" && index < numberOfInputs - 1) {
+    } else if (event.key === "Delete" && index < inputLength - 1) {
       const nextInput = document.getElementById(`otp-input-${index + 1}`);
       if (nextInput) {
         (nextInput as HTMLInputElement).focus();
@@ -147,7 +148,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
 
     for (let char of pasteData) {
       if (inputType === "tel" && /[^0-9]/.test(char)) continue;
-      if (pasteIndex < numberOfInputs) {
+      if (pasteIndex < inputLength) {
         newOtp[pasteIndex] = char;
         pasteIndex++;
       }
@@ -160,7 +161,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
       setIsOtpComplete(true);
     }
 
-    if (pasteIndex < numberOfInputs) {
+    if (pasteIndex < inputLength) {
       const nextInput = document.getElementById(`otp-input-${pasteIndex}`);
       if (nextInput) {
         (nextInput as HTMLInputElement).focus();
@@ -228,7 +229,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
               }}
             />
             {showSeparators &&
-              index < numberOfInputs - 1 &&
+              index < inputLength - 1 &&
               (typeof renderCustomSeparators === "function"
                 ? renderCustomSeparators()
                 : renderCustomSeparators)}
