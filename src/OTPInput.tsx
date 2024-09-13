@@ -2,16 +2,15 @@ import React, { CSSProperties, useEffect, useState } from "react";
 
 type AllowedInputTypes = "password" | "text" | "tel";
 type AllowedInputMode = "none" | "numeric" | "tel";
-type AllowedInputHeight = "auto" | "fit-content" | string;
 
 export interface OTPInputProps {
   inputLength: number;
   onChange: (otp: string) => void;
-  inputWidth?: string;
-  inputHeight?: AllowedInputHeight;
+  inputWidth?: CSSProperties["width"];
+  inputHeight?: CSSProperties["height"];
   disableAutoFocus?: boolean;
-  borderColor?: string;
-  borderRadius?: string;
+  borderColor?: CSSProperties["borderColor"];
+  borderRadius?: CSSProperties["borderRadius"];
   showSeparators?: boolean;
   renderCustomSeparators?: () => React.ReactNode | React.ReactNode;
   inputStyle?: CSSProperties;
