@@ -3,7 +3,9 @@
   "projectOwner": "EOEboh",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "files": ["README.md"],
+  "files": [
+    "README.md"
+  ],
   "imageSize": 100,
   "commit": true,
   "commitType": "docs",
@@ -15,7 +17,18 @@
       "name": "Emmanuel O. Eboh",
       "avatar_url": "https://avatars.githubusercontent.com/u/63825997?v=4",
       "profile": "https://github.com/EOEboh",
-      "contributions": ["code"]
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "xosnrdev",
+      "name": "Success Kingsley",
+      "avatar_url": "https://avatars.githubusercontent.com/u/106241330?v=4",
+      "profile": "https://github.com/xosnrdev",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
