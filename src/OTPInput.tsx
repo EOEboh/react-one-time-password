@@ -35,6 +35,7 @@ export interface OTPInputProps {
 		input?: string;
 		"resend-button-container"?: string;
 		"resend-button"?: string;
+		"input-separators"?: string;
 	};
 }
 
@@ -47,7 +48,14 @@ const OTPInput: React.FC<OTPInputProps> = ({
 	borderColor,
 	borderRadius,
 	showSeparators = true,
-	renderCustomSeparators = () => <span style={{ margin: "0 0.5rem" }}>-</span>,
+	renderCustomSeparators = () => (
+		<span
+			className={classNames?.["input-separators"]}
+			style={{ margin: "0 0.5rem" }}
+		>
+			-
+		</span>
+	),
 	inputStyle,
 	containerStyle,
 	inputType = "tel",
@@ -185,7 +193,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
 	// Default if no custom components is passed
 	const defaultRenderResendContainer = (children: React.ReactNode) => (
 		<div
-			className={classNames["resend-button-container"]}
+			className={classNames?.["resend-button-container"]}
 			style={resendContainerStyle}
 		>
 			{children}
@@ -199,7 +207,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
 		timer: number
 	) => (
 		<button
-			className={classNames["resend-button"]}
+			className={classNames?.["resend-button"]}
 			onClick={onClick}
 			disabled={disabled}
 			style={resendButtonStyle}
