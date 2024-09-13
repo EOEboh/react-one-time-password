@@ -4,7 +4,14 @@ A customizable OTP (One-Time Password) input component for React.
 
 ## Installation
 
-Take a look at the basic usage:
+With `npm`
+```sh
+npm i react-one-time-password
+```
+
+Or with any other package managers (`yarn`, `bun`)
+
+## Basic usage
 
 ```jsx
 import React, { useState } from "react";
@@ -30,7 +37,7 @@ const App: React.FC = () => {
 export default App;
 ```
 
-If you wish to have a _Resend OTP_ and _Timer_ logic, you can enable the `showResendButton` prop and optionally pass any custom markup via the `renderResendContainer` and ` renderResendButton` as shown below:
+If you wish to have a _Resend OTP_ and _Timer_ logic, you can enable the `showResendButton` prop and optionally pass any custom markup via the `renderResendContainer` and `renderResendButton` as shown below:
 
 ```jsx
 import React, { useState } from "react";
@@ -96,8 +103,7 @@ function App() {
 
 export default App;
 ```
-
-For more options, feel free to check out the props below:
+# Props Reference
 
 | Prop                     | Type                                                                         | Default                                               | Description                                                  |
 | ------------------------ | ---------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------ |
