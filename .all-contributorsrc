@@ -1,0 +1,21 @@
+{
+  "projectName": "react-one-time-password",
+  "projectOwner": "EOEboh",
+  "files": [
+    "README.md"
+  ],
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributorsPerLine": 7,
+  "contributors": [
+    {
+      "login": "EOEboh",
+      "name": "Emmanuel O. Eboh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/63825997?v=4",
+      "profile": "https://github.com/EOEboh",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
+}
