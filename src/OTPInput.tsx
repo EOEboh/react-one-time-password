@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React, { useState, useEffect, CSSProperties } from "react";
 
 type AllowedInputTypes = "password" | "text" | "tel";
