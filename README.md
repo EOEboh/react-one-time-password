@@ -128,6 +128,14 @@ For more options, feel free to check out the props below:
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/EOEboh"><img src="https://avatars.githubusercontent.com/u/63825997?v=4?s=100" width="100px;" alt="Emmanuel O. Eboh"/><br /><sub><b>Emmanuel O. Eboh</b></sub></a><br /><a href="https://github.com/EOEboh/react-one-time-password/commits?author=EOEboh" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/xosnrdev"><img src="https://avatars.githubusercontent.com/u/106241330?v=4?s=100" width="100px;" alt="Success Kingsley"/><br /><sub><b>Success Kingsley</b></sub></a><br /><a href="https://github.com/EOEboh/react-one-time-password/commits?author=xosnrdev" title="Code">💻</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
