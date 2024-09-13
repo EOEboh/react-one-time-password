@@ -5,6 +5,7 @@ A customizable OTP (One-Time Password) input component for React.
 ## Installation
 
 With `npm`
+
 ```sh
 npm i react-one-time-password
 ```
@@ -26,7 +27,7 @@ const App: React.FC = () => {
     <div>
       <h1>Enter OTP</h1>
       <OTPInput
-        numberOfInputs={6}
+        inputLength={6}
         onChange={handleOtpChange}
         inputStyle={{ width: "2em", height: "3em", fontSize: "1.5em" }} // Custom styles for larger inputs
       />
@@ -84,7 +85,7 @@ function App() {
     <div>
       <h2>OTP Verification</h2>
       <OTPInput
-        numberOfInputs={6}
+        inputLength={6}
         onChange={handleOtpChange}
         inputWidth="1em"
         inputHeight="3em"
@@ -103,11 +104,12 @@ function App() {
 
 export default App;
 ```
+
 # Props Reference
 
 | Prop                     | Type                                                                         | Default                                               | Description                                                  |
 | ------------------------ | ---------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------------ |
-| `numberOfInputs`         | `number`                                                                     | N/A                                                   | Number of OTP input fields.                                  |
+| `inputLength`            | `number`                                                                     | N/A                                                   | Length of OTP characters.                                    |
 | `onChange`               | `(otp: string) => void`                                                      | N/A                                                   | Callback function to handle OTP change.                      |
 | `inputWidth`             | `string`                                                                     | `"1em"`                                               | Width of each OTP input field.                               |
 | `inputHeight`            | `"auto" \| "fit-content" \| string`                                          | `"3em"`                                               | Height of each OTP input field.                              |
