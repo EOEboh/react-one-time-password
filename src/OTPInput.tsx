@@ -12,7 +12,7 @@ export interface OTPInputProps {
   borderColor?: CSSProperties["borderColor"];
   borderRadius?: CSSProperties["borderRadius"];
   showSeparators?: boolean;
-  renderCustomSeparators?: () => React.ReactNode | React.ReactNode;
+  renderCustomSeparators?: () => React.ReactNode;
   inputStyle?: CSSProperties;
   containerStyle?: CSSProperties;
   inputType?: AllowedInputTypes;
