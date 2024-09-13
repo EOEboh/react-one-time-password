@@ -122,3 +122,14 @@ For more options, feel free to check out the props below:
 | `renderResendButton`     | `(onClick: () => void, disabled: boolean, timer: number) => React.ReactNode` | N/A                                                   | Custom function to render the resend button.                 |
 | `showResendButton`       | `boolean`                                                                    | `false`                                               | Show the resend button.                                      |
 | `shouldDisableInput`     | `boolean`                                                                    | `false`                                               | Disable input fields when OTP is complete.                   |
+
+
+## Special Thanks to these Contributors
+!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
