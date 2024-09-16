@@ -16,6 +16,7 @@ export const Default: Story = {
     inputStyle: {},
     inputType: "tel",
     borderColor: "#6f8b6f",
+    classNames: {},
   },
 };
 
