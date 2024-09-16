@@ -7,6 +7,13 @@ type AllowedInputHeight = "auto" | "fit-content" | string;
 export interface OTPInputProps {
   numberOfInputs: number;
   onChange: (otp: string) => void;
+  classNames?: {
+    container?: string;
+    input?: string;
+    "resend-button-container"?: string;
+    "resend-button"?: string;
+    "input-separators"?: string;
+  };
   inputWidth?: string;
   inputHeight?: AllowedInputHeight;
   disableAutoFocus?: boolean;
@@ -30,20 +37,14 @@ export interface OTPInputProps {
   ) => React.ReactNode;
   showResendButton?: boolean;
   shouldDisableInput?: boolean;
-  classNames?: {
-    container?: string;
-    input?: string;
-    "resend-button-container"?: string;
-    "resend-button"?: string;
-    "input-separators"?: string;
-  };
 }
 
 const OTPInput: React.FC<OTPInputProps> = ({
   numberOfInputs,
   onChange,
-  inputWidth = "1em",
-  inputHeight = "3em",
+  classNames,
+  inputWidth = classNames?.input ? undefined : "1rem",
+  inputHeight = classNames?.input ? undefined : "3em",
   disableAutoFocus = false,
   borderColor,
   borderRadius,
@@ -68,7 +69,6 @@ const OTPInput: React.FC<OTPInputProps> = ({
   renderResendButton,
   showResendButton = false,
   shouldDisableInput = false,
-  classNames,
 }) => {
   const [otp, setOtp] = useState<string[]>(Array(numberOfInputs).fill(""));
   const [isFocused, setIsFocused] = useState(false);
