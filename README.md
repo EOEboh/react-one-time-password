@@ -2,7 +2,19 @@
 
 A customizable OTP (One-Time Password) input component for React.
 
-## Installation
+- Keyboard support
+- Custom separators support
+- TypeScript compatible
+- Resend and Timer Logic support
+- Tailwind classes support
+
+## Installation and Usage
+
+To install:
+
+```bash
+npm i react-one-time-password
+```
 
 Take a look at the basic usage:
 
@@ -21,13 +33,43 @@ const App: React.FC = () => {
       <OTPInput
         numberOfInputs={6}
         onChange={handleOtpChange}
-        inputStyle={{ width: "2em", height: "3em", fontSize: "1.5em" }} // Custom styles for larger inputs
+        // Custom styles for larger inputs
+        inputStyle={{ width: "2em", height: "3em", fontSize: "1.5em" }}
       />
     </div>
   );
 };
 
 export default App;
+```
+
+Asides from the direct style props, you can also pass the `classNames` prop in case you need custom class names for styling or Tailwind classes.
+
+The `classNames` prop supports the following keys:
+
+- `container:` For the main container of the OTP input fields.
+
+- `input:` For individual OTP input fields.
+
+- `resend-button-container:` For the container of the resend button.
+
+- `resend-button:` For the resend button itself.
+
+- `input-separators:` For the separators between OTP input
+
+```jsx
+<OTPInput
+  numberOfInputs={4}
+  onChange={(otp) => console.log(otp)}
+  // Tailwind classes
+  classNames={{
+    container: "flex items-center",
+    input: "w-12 h-12 text-center border rounded-md",
+    "resend-button-container": "mt-4",
+    "resend-button": "px-4 py-2 bg-blue-500 text-white rounded",
+    "input-separators": "mx-2",
+  }}
+/>
 ```
 
 If you wish to have a _Resend OTP_ and _Timer_ logic, you can enable the `showResendButton` prop and optionally pass any custom markup via the `renderResendContainer` and ` renderResendButton` as shown below:
@@ -122,7 +164,7 @@ For more options, feel free to check out the props below:
 | `renderResendButton`     | `(onClick: () => void, disabled: boolean, timer: number) => React.ReactNode`                                              | N/A                                                   | Custom function to render the resend button.                 |
 | `showResendButton`       | `boolean`                                                                                                                 | `false`                                               | Show the resend button.                                      |
 | `shouldDisableInput`     | `boolean`                                                                                                                 | `false`                                               | Disable input fields when OTP is complete.                   |
-| `classNames`             | `{ container?: string; input?: string; "resend-button-container"?: string; "resend-button"?: string; "input-seperators"}` | N/A                                                   | Optional CSS class names for customizing component styles.   
+| `classNames`             | `{ container?: string; input?: string; "resend-button-container"?: string; "resend-button"?: string; "input-seperators"}` | N/A                                                   | Optional CSS class names for customizing component styles.   |
 
 ## Special Thanks to these Contributors
 

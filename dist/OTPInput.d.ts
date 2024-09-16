@@ -2,9 +2,16 @@ import React, { CSSProperties } from "react";
 type AllowedInputTypes = "password" | "text" | "tel";
 type AllowedInputMode = "none" | "numeric" | "tel";
 type AllowedInputHeight = "auto" | "fit-content" | string;
-interface OTPInputProps {
+export interface OTPInputProps {
     numberOfInputs: number;
     onChange: (otp: string) => void;
+    classNames?: {
+        container?: string;
+        input?: string;
+        "resend-button-container"?: string;
+        "resend-button"?: string;
+        "input-separators"?: string;
+    };
     inputWidth?: string;
     inputHeight?: AllowedInputHeight;
     disableAutoFocus?: boolean;
