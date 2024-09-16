@@ -30,6 +30,13 @@ export interface OTPInputProps {
   ) => React.ReactNode;
   showResendButton?: boolean;
   shouldDisableInput?: boolean;
+  classNames?: {
+    container?: string;
+    input?: string;
+    "resend-button-container"?: string;
+    "resend-button"?: string;
+    "input-separators"?: string;
+  };
 }
 
 const OTPInput: React.FC<OTPInputProps> = ({
@@ -41,7 +48,14 @@ const OTPInput: React.FC<OTPInputProps> = ({
   borderColor,
   borderRadius,
   showSeparators = true,
-  renderCustomSeparators = () => <span style={{ margin: "0 0.5rem" }}>-</span>,
+  renderCustomSeparators = () => (
+    <span
+      className={classNames?.["input-separators"]}
+      style={{ margin: "0 0.5rem" }}
+    >
+      -
+    </span>
+  ),
   inputStyle,
   containerStyle,
   inputType = "tel",
@@ -54,6 +68,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
   renderResendButton,
   showResendButton = false,
   shouldDisableInput = false,
+  classNames,
 }) => {
   const [otp, setOtp] = useState<string[]>(Array(numberOfInputs).fill(""));
   const [isFocused, setIsFocused] = useState(false);
@@ -78,7 +93,6 @@ const OTPInput: React.FC<OTPInputProps> = ({
       setCanResend(true);
     }
   }, [timer]);
-
   const handleOnFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     event.target.select();
     setIsFocused(true);
@@ -178,7 +192,12 @@ const OTPInput: React.FC<OTPInputProps> = ({
 
   // Default if no custom components is passed
   const defaultRenderResendContainer = (children: React.ReactNode) => (
-    <div style={resendContainerStyle}>{children}</div>
+    <div
+      className={classNames?.["resend-button-container"]}
+      style={resendContainerStyle}
+    >
+      {children}
+    </div>
   );
 
   // Default if no custom components is passed
@@ -187,7 +206,12 @@ const OTPInput: React.FC<OTPInputProps> = ({
     disabled: boolean,
     timer: number
   ) => (
-    <button onClick={onClick} disabled={disabled} style={resendButtonStyle}>
+    <button
+      className={classNames?.["resend-button"]}
+      onClick={onClick}
+      disabled={disabled}
+      style={resendButtonStyle}
+    >
       {disabled ? `Resend OTP in ${timer} seconds` : "Resend OTP"}
     </button>
   );
@@ -201,6 +225,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
           flexWrap: "wrap",
           ...containerStyle,
         }}
+        className={classNames?.container}
       >
         {otp.map((_, index) => (
           <React.Fragment key={index}>
@@ -226,6 +251,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
                 borderColor: isFocused && borderColor ? borderColor : undefined,
                 ...inputStyle,
               }}
+              className={classNames?.input}
             />
             {showSeparators &&
               index < numberOfInputs - 1 &&
@@ -235,6 +261,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
           </React.Fragment>
         ))}
       </div>
+
       <div style={{ marginTop: "1rem" }}>
         {showResendButton &&
           (renderResendContainer || defaultRenderResendContainer)(
