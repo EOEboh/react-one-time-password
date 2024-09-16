@@ -122,7 +122,7 @@ For more options, feel free to check out the props below:
 | `renderResendButton`     | `(onClick: () => void, disabled: boolean, timer: number) => React.ReactNode`                                              | N/A                                                   | Custom function to render the resend button.                 |
 | `showResendButton`       | `boolean`                                                                                                                 | `false`                                               | Show the resend button.                                      |
 | `shouldDisableInput`     | `boolean`                                                                                                                 | `false`                                               | Disable input fields when OTP is complete.                   |
-| `classNames`             | `{ container?: string; input?: string; "resend-button-container"?: string; "resend-button"?: string; "input-seperators"}` | N/A                                                   | Optional CSS class names for customizing component styles.   |
+| `classNames`             | `{ container?: string; input?: string; "resend-button-container"?: string; "resend-button"?: string; "input-seperators"}` | N/A                                                   | Optional CSS class names for customizing component styles.   
 
 ## Special Thanks to these Contributors
 
