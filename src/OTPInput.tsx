@@ -191,9 +191,16 @@ const OTPInput: React.FC<OTPInputProps> = ({
   };
 
   // Autofocus on the next input on input change
-   const focusOnNext = (event:React.ChangeEvent<HTMLInputElement> , nextFieldId: number) => {
-    const value = event.target.value;
-    if (value.length === 1 && inputType === "tel" && /[0-9]/.test(value)) {
+  const focusOnNext = (
+    event: React.FormEvent<HTMLInputElement>,
+    nextFieldId: number
+  ) => {
+    const target = event.target as HTMLInputElement;
+    if (
+      target.value.length === 1 &&
+      inputType === "tel" &&
+      /[0-9]/.test(target.value)
+    ) {
       document.getElementById(`otp-input-${nextFieldId + 1}`)?.focus();
     }
   };
@@ -245,7 +252,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
               maxLength={1}
               value={otp[index]}
               onChange={(e) => handleChange(e.target, index)}
-              onInput = {(e) => focusOnNext(e, index)} 
+              onInput={(e) => focusOnNext(e, index)}
               onFocus={handleOnFocus}
               onBlur={handleBlur}
               onKeyDown={(e) => handleKeyDown(e, index)}
