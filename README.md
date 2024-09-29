@@ -177,6 +177,7 @@ For more options, feel free to check out the props below:
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/EOEboh"><img src="https://avatars.githubusercontent.com/u/63825997?v=4?s=100" width="100px;" alt="Emmanuel O. Eboh"/><br /><sub><b>Emmanuel O. Eboh</b></sub></a><br /><a href="https://github.com/EOEboh/react-one-time-password/commits?author=EOEboh" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/xosnrdev"><img src="https://avatars.githubusercontent.com/u/106241330?v=4?s=100" width="100px;" alt="Success Kingsley"/><br /><sub><b>Success Kingsley</b></sub></a><br /><a href="https://github.com/EOEboh/react-one-time-password/commits?author=xosnrdev" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://my-portofiio.vercel.app/"><img src="https://avatars.githubusercontent.com/u/102271199?v=4?s=100" width="100px;" alt="Rasheed"/><br /><sub><b>Rasheed</b></sub></a><br /><a href="https://github.com/EOEboh/react-one-time-password/commits?author=Demandtech" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/tech-doctor"><img src="https://avatars.githubusercontent.com/u/55724699?v=4?s=100" width="100px;" alt="Oluka Isaac"/><br /><sub><b>Oluka Isaac</b></sub></a><br /><a href="https://github.com/EOEboh/react-one-time-password/commits?author=tech-doctor" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
